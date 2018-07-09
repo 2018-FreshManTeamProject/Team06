@@ -43,9 +43,6 @@
   <ItemGroup>
     <Compile Include="Actor\Player.cs" />
     <Compile Include="Device\GameDevice.cs" />
-    <Compile Include="Device\Input.cs" />
-    <Compile Include="Device\Renderer.cs" />
-    <Compile Include="Device\Sound.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
