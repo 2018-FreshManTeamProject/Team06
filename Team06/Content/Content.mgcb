@@ -14,6 +14,8 @@
 #---------------------------------- Content ---------------------------------#
 
 #begin boll1.png
+=======
+#begin kaito.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -36,4 +38,6 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:backkari.bmp
+=======
+/build:kaito.png
 
