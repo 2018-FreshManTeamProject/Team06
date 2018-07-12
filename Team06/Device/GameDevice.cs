@@ -10,7 +10,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Team06.Device
 {
-    class GameDevice
+    sealed class GameDevice
     {
         /// <summary>
         /// ゲームデバイスクラス
