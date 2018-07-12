@@ -4,14 +4,8 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/電算部/SourceTree/Team06/Content/時計.png</File>
-=======
+    <File>C:/Users/K018A1694/Desktop/電算チーム制作＿6班/Team06/Content/時計.png</File>
     <File>C:/Users/K018A1694/Desktop/電算チーム制作＿6班/Team06/Content/boll1.png</File>
     <File>C:/Users/K018A1694/Desktop/電算チーム制作＿6班/Team06/Content/backkari.bmp</File>
-=======
-    <File>C:/Users/ShyotaTanaka/Desktop/そーすつりー/Team06/Content/kaito.png</File>
-=======
-    <File>C:/電算部/SourceTree/Team06/Content/boll1.png</File>
-    <File>C:/電算部/SourceTree/Team06/Content/backkari.bmp</File>
   </SourceFiles>
 </SourceFileCollection>
