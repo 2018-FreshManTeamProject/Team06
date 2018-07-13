@@ -9,6 +9,12 @@ namespace Team06.Util
 {
     class Motion
     {
+        private Range range;      //範囲
+        private Timer timer;      //切り替え時間
+        private int motionNumber;//現在のモーション番号
+
+        //表示位置を番号で管理
+        //Dictionaryを使えば登録順番を気にしなくてもよい
 
         private Range range;//範囲
         //private Timer timer;//切り替え時間
@@ -25,6 +31,7 @@ namespace Team06.Util
         public Motion()
         {
             //何もしない
+            Initialize(new Range(0, 0), new CountDownTimer());
             Initialize(new Range(0, 0)/*, new CountDownTimer()*/);
         }
 
@@ -32,6 +39,10 @@ namespace Team06.Util
         /// コンストラクタ
         /// </summary>
         /// <param name="range">範囲</param>
+        /// <param name="timer">モーションの切り替え時間</param>
+        public Motion(Range range, Timer timer)
+        {
+            Initialize(range, timer);
         /// <param name="timer">モーション切り替え時間</param>
         public Motion(Range range /*,Timer timer*/)
         {
@@ -42,6 +53,13 @@ namespace Team06.Util
         /// 初期化
         /// </summary>
         /// <param name="range">範囲</param>
+        /// <param name="timer">モーションの切り替え時間</param>
+        public void Initialize(Range range, Timer timer)
+        {
+            this.range = range;
+            this.timer = timer;
+
+            //モーション番号は、範囲の最初に設定
         /// <param name="timer">モーション切り替え時間</param>
         public void Initialize(Range range/*, Timer timer*/)
         {
@@ -53,6 +71,13 @@ namespace Team06.Util
         }
 
         /// <summary>
+        /// モーション短形情報の追加
+        /// </summary>
+        /// <param name="index">管理番号</param>
+        /// <param name="rect">短形</param>
+        public void Add(int index, Rectangle rect)
+        {
+            //すでに登録されていたら何もしない
         /// モーション矩形情報の追加
         /// </summary>
         /// <param name="index">管理番号</param>
@@ -64,6 +89,7 @@ namespace Team06.Util
             {
                 return;
             }
+
             //登録
             rectangles.Add(index, rect);
         }
@@ -71,6 +97,7 @@ namespace Team06.Util
         /// <summary>
         /// モーションの更新
         /// </summary>
+        private void MotionUpdate()
         public void MotionUpdate()
         {
             //モーション番号をインクリメント
@@ -89,6 +116,7 @@ namespace Team06.Util
         /// <param name="gameTime">ゲーム時間</param>
         public void Update(GameTime gameTime)
         {
+            //ガード説(範囲外なら何もしない)
             //ガード説（範囲外なら何もしない）
             if (range.IsOutOfRange())
             {
@@ -96,6 +124,16 @@ namespace Team06.Util
             }
 
             //時間を更新
+            timer.Update(gameTime);
+            //指定時間になってたらモーション更新
+            if (timer.IsTime())
+            {
+                timer.Intialize();
+                MotionUpdate();
+            }
+
+        }
+
             //timer.Update(gameTime);
             //指定時間になってたらモーション更新
             //if (timer.IsTime())
