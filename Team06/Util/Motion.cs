@@ -16,6 +16,8 @@ namespace Team06.Util
         //表示位置を番号で管理
         //Dictionaryを使えば登録順番を気にしなくてもよい
 
+        //表示位置を番号で管理
+        //Dictionaryを使えば登録順番を気にしなくてもよい
         private Range range;//範囲
         //private Timer timer;//切り替え時間
         private int motionNumber;//現在のモーション番号
@@ -32,6 +34,7 @@ namespace Team06.Util
         {
             //何もしない
             Initialize(new Range(0, 0), new CountDownTimer());
+
             Initialize(new Range(0, 0)/*, new CountDownTimer()*/);
         }
 
@@ -43,6 +46,7 @@ namespace Team06.Util
         public Motion(Range range, Timer timer)
         {
             Initialize(range, timer);
+        }
         /// <param name="timer">モーション切り替え時間</param>
         public Motion(Range range /*,Timer timer*/)
         {
@@ -60,17 +64,18 @@ namespace Team06.Util
             this.timer = timer;
 
             //モーション番号は、範囲の最初に設定
+        }
         /// <param name="timer">モーション切り替え時間</param>
         public void Initialize(Range range/*, Timer timer*/)
         {
             this.range = range;
             //this.timer = timer;
-
             //モーション番号は範囲の最初に設定
             motionNumber = range.First();
         }
 
         /// <summary>
+
         /// モーション短形情報の追加
         /// </summary>
         /// <param name="index">管理番号</param>
@@ -78,6 +83,7 @@ namespace Team06.Util
         public void Add(int index, Rectangle rect)
         {
             //すでに登録されていたら何もしない
+        }
         /// モーション矩形情報の追加
         /// </summary>
         /// <param name="index">管理番号</param>
@@ -85,10 +91,13 @@ namespace Team06.Util
         public void Add(int index, Rectangle rect)
         {
             //すでに登録されてたら何もしない
+
             if (rectangles.ContainsKey(index))
             {
                 return;
             }
+
+
 
             //登録
             rectangles.Add(index, rect);
@@ -117,13 +126,18 @@ namespace Team06.Util
         public void Update(GameTime gameTime)
         {
             //ガード説(範囲外なら何もしない)
+
+            //ガード説(範囲外なら何もしない)
+
             //ガード説（範囲外なら何もしない）
+
             if (range.IsOutOfRange())
             {
                 return;
             }
 
             //時間を更新
+
             timer.Update(gameTime);
             //指定時間になってたらモーション更新
             if (timer.IsTime())
@@ -133,6 +147,7 @@ namespace Team06.Util
             }
 
         }
+        
 
             //timer.Update(gameTime);
             //指定時間になってたらモーション更新
