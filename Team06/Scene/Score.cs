@@ -49,8 +49,7 @@ namespace Team06.Scene
 
             else if (poolScore < 0)
             {
-                score -= 1;
-                poolScore += 1;
+
             }
 
         }

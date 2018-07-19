@@ -15,7 +15,10 @@ namespace Team06.Scene
         enum Scene
         {
             Title,
+           //ステージ選択
             GamePlay,
+            //リスタート画面
+            //リザルト画面
             Ending
         }
 

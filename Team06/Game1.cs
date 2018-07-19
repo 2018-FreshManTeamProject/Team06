@@ -30,7 +30,9 @@ namespace Team06
         private SpriteBatch spriteBatch;//画像をスクリーン上に描画するためのオブジェクト
         private GameDevice gameDevice;
         private Renderer renderer;     //描画オブジェクト
-        private SceneManager sceneManager;           //シーン管理者
+        private SceneManager sceneManager;   //シーン管理者
+        private Timer timer;
+        private TimerUI timerUI;
         /// <summary>
         /// コンストラクタ
         /// （new で実体生成された際、一番最初に一回呼び出される）
@@ -45,7 +47,7 @@ namespace Team06
             graphicsDeviceManager.PreferredBackBufferWidth = Screen.Width;
             graphicsDeviceManager.PreferredBackBufferHeight = Screen.Height;
 
-            Window.Title = "追いかけ";
+            Window.Title = "Team06";
 
         }
 
@@ -61,57 +63,48 @@ namespace Team06
 
             sceneManager = new SceneManager();
             //sceneManager.Add(Scene.Scene.Title, new SceneFader(new Title()));       //シーンフェーダーを追加
-
-            IScene addScene = new GamePlay();
+            CountUpTimer scoreTimer = new CountUpTimer();
+            IScene addScene = new GamePlay(scoreTimer);
+           
+            sceneManager.Add(Scene.Scene.Title, new Title());
             sceneManager.Add(Scene.Scene.GamePlay, addScene);
-           // sceneManager.Add(Scene.Scene.Ending, new SceneFader(new Ending(addScene)));
+            sceneManager.Add(Scene.Scene.Ending,new Ending(addScene,scoreTimer));
+            // sceneManager.Add(Scene.Scene.Ending, new SceneFader(new Ending(addScene)));
             sceneManager.Change(Scene.Scene.Title);             //最初のシーンはタイトルに変更
 
-
+            timer = new CountDownTimer(30);
+            timerUI = new TimerUI(timer);
             // この上にロジックを記述
             base.Initialize();// 親クラスの初期化処理呼び出し。絶対に消すな！！
         }
-
+       
         /// <summary>
         /// コンテンツデータ（リソースデータ）の読み込み処理
         /// （起動時、１度だけ呼ばれる）
         /// </summary>
         protected override void LoadContent()
         {
-        //    // 画像を描画するために、スプライトバッチオブジェクトの実体生成
-        //    spriteBatch = new SpriteBatch(GraphicsDevice);
-        //    renderer = gameDevice.GetRenderer();
+             // 画像を描画するために、スプライトバッチオブジェクトの実体生成
+             spriteBatch = new SpriteBatch(GraphicsDevice);
+             renderer = gameDevice.GetRenderer();
 
-        //    // この下にロジックを記述
-        //    #region
-        //   // renderer.LoadContent("");
-            
-        //    #endregion
+            // この下にロジックを記述
+            renderer.LoadContent("backkari");
+            //  renderer.LoadContent("kabe");
+            renderer.LoadContent("number");
+            renderer.LoadContent("timer");
+            renderer.LoadContent("ending");
+            renderer.LoadContent("goal");
 
-        //    //1ピクセル黒画像の生成
-        //    Texture2D fade = new Texture2D(GraphicsDevice, 1, 1);
-        //    Color[] colors = new Color[1 * 1];
-        //    colors[0] = new Color(0, 0, 0);
-        //    fade.SetData(colors);
-        ////    renderer.LoadContent("fade", fade);
 
-        //    Sound sound = gameDevice.GetSound();
-        //    string filepath = "";
-        //    sound.LoadBGM("titlebgm", filepath);
-        //    sound.LoadBGM("gameplaybgm", filepath);
-        //    sound.LoadBGM("endingbgm", filepath);
-
-        //    sound.LoadSE("titlese", filepath);
-        //    sound.LoadSE("gameplayse", filepath);
-        //    sound.LoadSE("endingse", filepath);
-
+            ////    renderer.LoadContent("fade", fade);
+            //    Sound sound = gameDevice.GetSound();
+            //    string filepath = "";
+            //    sound.LoadBGM("titlebgm", filepath);
             // この上にロジックを記述
-           // base.Initialize();// 親クラスの初期化処理呼び出し。絶対に消すな！！
-
-
+            // base.Initialize();// 親クラスの初期化処理呼び出し。絶対に消すな！！
             // この上にロジックを記述
         }
-
         /// <summary>
         /// コンテンツの解放処理
         /// （コンテンツ管理者以外で読み込んだコンテンツデータを解放）

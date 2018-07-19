@@ -18,11 +18,16 @@ namespace Team06.Scene
         {
             this.timer = timer;
         }
-
         public void Draw(Renderer renderer)
         {
             renderer.DrawTexture("timer", new Vector2(400, 10));
             renderer.DrawNumber("number", new Vector2(600, 13), timer.Now());
+        }
+
+        public void Draw(Renderer renderer,Vector2 position)
+        {
+            renderer.DrawTexture("timer", position);
+            renderer.DrawNumber("number", position + new Vector2(200, 3), timer.Now());
         }
     }
 }

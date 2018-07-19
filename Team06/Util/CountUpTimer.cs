@@ -22,7 +22,7 @@ namespace Team06.Util
         }
         public override void Intialize()
         {
-            currentTime = limitTime;
+            currentTime = 0f;
         }
 
         public override bool IsTime()
@@ -42,7 +42,7 @@ namespace Team06.Util
         public override void Update(GameTime gameTime)
         {
             //現在の時間を増やす。ただし最大値は0.0
-            currentTime = Math.Min(currentTime + 1f, limitTime);
+            currentTime = currentTime + 1f;
         }
     }
 }

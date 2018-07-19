@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
 
 using Team06.Actor;
 using Team06.Device;
@@ -11,71 +12,25 @@ using Team06.Util;
 
 namespace Team06.Scene
 {
-    class GamePlay : IScene, IGameMediator
+    class GamePlay : IScene
     {
-        //private Player player;          //プレイヤーとなる白玉
-        //private List<Character> characters;//キャラクターを一括管理
-
         private CharacterManager characterManager;    //キャラクター管理者
         private Score score;                          //得点
-        private Timer timer;　　　　　　　　　　　　　//ゲームプレイ時間
-        private TimerUI timerUI;           //時間UI
 
+        private Timer scoreTimer;                     //スコアになるタイマー
+        private CountDownTimer limitTimer;            //制限時間
 
-        private bool isEndFlag;            //シーン終了フラグ
+        private TimerUI timerUI;                      //時間UI
+        private bool isEndFlag;                       //シーン終了フラグ
         private Sound sound;
 
-        public GamePlay()
+        public GamePlay(Timer scoreTimer)
         {
             isEndFlag = false;
             var gameDevice = GameDevice.Instance();
             sound = gameDevice.GetSound();
-
-
-        }
-
-        public void AddActor(Character character)
-        {
-            characterManager.Add(character);
-        }
-
-        public void AddScore()
-        {
-            score.Add();
-        }
-
-        public void AddScore(int num)
-        {
-            score.Add(num);
-        }
-
-        public void Draw(Renderer renderer)
-        {
-            //描画開始
-            renderer.Begin();
-            //背景を描画
-            renderer.DrawTexture("stage", Vector2.Zero);
-
-            //キャラクター一括管理
-            //characters.ForEach(c => c.Draw(renderer));
-            ////プレイヤーを描画
-            //player.Draw(renderer);
-            //////エネミーを描画
-            //enemy.Draw(renderer);
-            //enemy2.Draw(renderer);
-            //randomenemy.Draw(renderer);
-            score.Draw(renderer);
-            timerUI.Draw(renderer);
-
-
-            characterManager.Draw(renderer);        //キャラクター管理者の描画
-            //if (timer.IsTime())
-            //{
-            //    renderer.DrawTexture("ending", new Vector2(150, 150));
-            //}
-            //描画終了
-            renderer.End();
-
+            this.scoreTimer = scoreTimer;
+            limitTimer = new CountDownTimer(60.0f);
         }
 
         public void Intialize()
@@ -86,25 +41,24 @@ namespace Team06.Scene
             //キャラクターマネージャーの実態生成
             characterManager = new CharacterManager();
 
+            //時間関連
+            timerUI = new TimerUI(limitTimer);
+
+            //スコア関連
+            score = new Score();
+            //制限時間
+            limitTimer.Intialize();
+            //かかった時間
+            scoreTimer.Intialize();
 
             //------------プレイヤー追加処理---------------
             //キャラクターマネージャーにプレイヤー追加
             //characterManager.Add(new Player(this));
-           
 
             //------------エネミー追加処理------------------
             ////動かない敵を追加
             //characterManager.Add(new Enemy(this));
 
-
-           
-
-            //時間関連
-            timer = new CountDownTimer(5);
-            timerUI = new TimerUI(timer);
-
-            //スコア関連
-            score = new Score();
             ////プレイヤーの実態生成
             //player = new Player();
             ////プレイヤーを初期化
@@ -129,6 +83,52 @@ namespace Team06.Scene
 
         }
 
+        public void AddActor(Character character)
+        {
+            characterManager.Add(character);
+        }
+
+        public void AddScore()
+        {
+            score.Add();
+        }
+
+        public void AddScore(int num)
+        {
+            score.Add(num);
+        }
+
+        public void Draw(Renderer renderer)
+        {
+            //描画開始
+            renderer.Begin();
+            //背景を描画
+            renderer.DrawTexture("backkari", Vector2.Zero);
+            renderer.DrawTexture("goal", new Vector2(700,600));
+
+            //   renderer.DrawTexture("kabe", Vector2.Zero);
+
+            //キャラクター一括管理
+
+            ////プレイヤーを描画
+            //player.Draw(renderer);
+            //////エネミーを描画
+            //enemy.Draw(renderer);
+
+            //score.Draw(renderer);
+            timerUI.Draw(renderer);
+
+
+            characterManager.Draw(renderer);        //キャラクター管理者の描画
+            //if (timer.IsTime())
+            //{
+            //    renderer.DrawTexture("ending", new Vector2(150, 150));
+            //}
+            //描画終了
+            renderer.End();
+
+        }
+
         public bool IsEnd()
         {
             return isEndFlag;
@@ -142,60 +142,32 @@ namespace Team06.Scene
 
         public void Shutdown()
         {
-            sound.StopBGM();
+
         }
 
         public void Update(GameTime gameTime)
         {
-            timer.Update(gameTime);
+            scoreTimer.Update(gameTime);
+            limitTimer.Update(gameTime);
             score.Update(gameTime);
-
-            sound.PlayBGM("gameplaybgm");
 
             //キャラクターマネージャー更新
             characterManager.Update(gameTime);
 
 
             //時間切れか？
-            if (timer.IsTime())
+            if (limitTimer.IsTime())
             {
                 //計算途中のスコアを全部加算
                 score.Shutdown();
                 //シーン終了
                 isEndFlag = true;
-                sound.PlaySE("gameplayse");
             }
-            ////キャラクターを一括更新（ForEachメソッド版
-            //characters.ForEach(c => c.Update(gameTime));
-            ////Playerの更新
-            //player.Update(gameTime);
 
-            ////衝突判定
-            ////敵キャラすべてと判定
-            //foreach (var c in characters)
-            //{    
-            //     //衝突した敵は初期化メソッドで初期化                 
-            //     int num = 10;
-            //     if (c is BoundEnemy)
-            //     {
-            //        num = 200;
-            //     } 
-
-            //    //リストから取り出した1体分の敵cとプレイヤーの衝突判定
-            //    if (player.InCollision(c))
-            //    {
-            //        c.Initialize();
-            //        if (!timer.IsTime())
-            //        {
-            //            score.Add(num);
-            //        }
-            //    }
-
-
-
-
-
-
+            if (Input.GetKeyTrigger(Keys.Space))
+            {
+                isEndFlag = true;
+            }
         }
     }
 }

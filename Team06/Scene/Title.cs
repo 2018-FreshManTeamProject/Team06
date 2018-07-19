@@ -17,7 +17,6 @@ namespace Team06.Scene
         private Sound sound; 　　 //サウンドオブジェクト
         private Motion motion;    //モーション管理
 
-
         /// <summary>
         ///コンストラクタ
         /// </summary>
@@ -26,9 +25,8 @@ namespace Team06.Scene
             isEndFlag = false;
             var gameDevice = GameDevice.Instance();
             sound = gameDevice.GetSound();
+            motion = new Motion();
         }
-
-
         /// <summary>
         /// 描画
         /// </summary>
@@ -36,33 +34,16 @@ namespace Team06.Scene
         public void Draw(Renderer renderer)
         {
             renderer.Begin();
-            renderer.DrawTexture("title", Vector2.Zero);
-            renderer.DrawTexture("puddle", new Vector2(200, 370), motion.DrawingRange());
+            renderer.DrawTexture("backkari", Vector2.Zero);
             renderer.End();
         }
-
-
         /// <summary>
         /// 初期化
         /// </summary>
         public void Intialize()
         {
             isEndFlag = false;
-
-            motion = new Motion();
-            motion.Add(0, new Rectangle(64 * 0, 0, 64, 64));
-            motion.Add(1, new Rectangle(64 * 1, 0, 64, 64));
-            motion.Add(2, new Rectangle(64 * 2, 0, 64, 64));
-            motion.Add(3, new Rectangle(64 * 3, 0, 64, 64));
-            motion.Add(4, new Rectangle(64 * 4, 0, 64, 64));
-            motion.Add(5, new Rectangle(64 * 5, 0, 64, 64));
-
-            //範囲は0～5、モーション切り替え時間は0.2秒で初期化
-            motion.Initialize(new Range(0, 5), new CountDownTimer(0.05f));
         }
-
-
-
         /// <summary>
         /// 終了か？
         /// </summary>
@@ -71,7 +52,6 @@ namespace Team06.Scene
         {
             return isEndFlag;
         }
-
         /// <summary>
         /// 次のシーンへ
         /// </summary>
@@ -85,26 +65,20 @@ namespace Team06.Scene
         /// </summary>
         public void Shutdown()
         {
-            sound.StopBGM();
+
         }
-
-
-
         /// <summary>
         /// 更新
         /// </summary>
         /// <param name="gameTime">ゲーム時間</param>
         public void Update(GameTime gameTime)
         {
-            //sound.PlayBGM("titlebgm");
             //motion.Update(gameTime);
-            ////スペースキーが押されたか？
-            //if (Input.GetKeyTrigger(Keys.Space))
-            //{
-            //    isEndFlag = true;
-            //    sound.PlaySE("titlese");
-            //}
-
+            //スペースキーが押されたか？
+            if (Input.GetKeyTrigger(Keys.Space))
+            {
+                isEndFlag = true;
+            }
         }
     }
 }

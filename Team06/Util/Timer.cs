@@ -7,17 +7,12 @@ using Microsoft.Xna.Framework;
 
 namespace Team06.Util
 {
-   abstract class Timer
+    abstract class Timer
     {
         //子クラスでも利用できるようprotected
         protected float limitTime;    //制限時間
         protected float currentTime;  //現在の時間
-
-
-
-
-
-
+        protected float elapsedTime;  //経過時間
         /// <summary>
         /// コンストラクタコンストラクタ
         /// </summary>
@@ -26,7 +21,6 @@ namespace Team06.Util
         {
             limitTime = 60 * second;   //60fps*秒
         }
-
         /// <summary>
         /// デフォルトコンストラクタ
         /// </summary>
@@ -35,8 +29,6 @@ namespace Team06.Util
         {
 
         }
-
-
         //抽象メソッド
         public abstract void Intialize();
 
@@ -46,16 +38,19 @@ namespace Team06.Util
 
         public abstract float Rate();
 
-
         public void SetTime(float second)
         {
             limitTime = 60 * second;
         }
-
         public float Now()
         {
             return currentTime / 60f;  //60fps想定なので60で割る
         }
-
+        public float Result()
+        {
+          return  elapsedTime = limitTime - currentTime;
+            
+        }
+        
     }
 }

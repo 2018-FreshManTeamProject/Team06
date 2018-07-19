@@ -18,10 +18,6 @@ namespace Team06.Device
         private ContentManager contentManager; //コンテンツ管理者
         private GraphicsDevice graphicsDevice; //グラフィック機器
         private SpriteBatch spriteBatch; //スプライト一括描画用オブジェクト
-
-
-
-
         //複数画像管理用変数の宣言と生成
         private Dictionary<string, Texture2D> textures = new Dictionary<string, Texture2D>();
 
@@ -36,7 +32,6 @@ namespace Team06.Device
             graphicsDevice = graphics;
             spriteBatch = new SpriteBatch(graphicsDevice);
         }
-
         /// <summary>
         /// 画像の読み込み
         /// </summary>
@@ -47,16 +42,14 @@ namespace Team06.Device
             //すでにキー（assetName：アセット名）が登録されているとき
             if (textures.ContainsKey(assetName))
             {
-#if DEBUG //DEBUGモードの時のみ下記エラー分をコンソールへ表示
+#if DEBUG       //DEBUGモードの時のみ下記エラー分をコンソールへ表示
                 Console.WriteLine(assetName + "はすでに読み込まれています。\n プログラムを確認してください。");
 #endif
-
                 //それ以上読み込まないのでここで終了
                 return;
             }
             //画像の読み込みとDictionaryへアセット名と画像を登録
             textures.Add(assetName, contentManager.Load<Texture2D>(filepath + assetName));
-
         }
         public void LoadContent(string assetName, Texture2D texture)
         {
@@ -66,16 +59,12 @@ namespace Team06.Device
 #if DEBUG //DEBUGモードの時のみ下記エラー分をコンソールへ表示
                 Console.WriteLine(assetName + "はすでに読み込まれています。\n プログラムを確認してください。");
 #endif
-
                 //それ以上読み込まないのでここで終了
                 return;
             }
             //画像の読み込みとDictionaryへアセット名と画像を登録
             textures.Add(assetName, texture);
-
         }
-
-
         /// <summary>
         /// アンロード
         /// </summary>
@@ -83,7 +72,6 @@ namespace Team06.Device
         {
             textures.Clear();//Dictionaryの情報をクリア
         }
-
         /// <summary>
         /// 描画開始
         /// </summary>
@@ -91,7 +79,6 @@ namespace Team06.Device
         {
             spriteBatch.Begin();
         }
-
         /// <summary>
         /// 描画終了
         /// </summary>
@@ -134,7 +121,6 @@ namespace Team06.Device
                  depth                           //スプライト深度
                  );
         }
-
         /// <summary>
         /// 画像の描画（画像サイズはそのまま）
         /// </summary>
@@ -147,10 +133,8 @@ namespace Team06.Device
             Debug.Assert(
                 textures.ContainsKey(assetName),
                 "描画時にアセット名の指定を間違えたか、画像の読み込み自体できていません");
-
             spriteBatch.Draw(textures[assetName], position, Color.White * alpha);
         }
-
         /// <summary>
         /// 画像の描画（画像を指定範囲内だけ描画）
         /// </summary>

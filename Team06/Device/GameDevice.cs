@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
@@ -26,7 +27,6 @@ namespace Team06.Device
             private static Random random;
             private ContentManager content;
             private GraphicsDevice graphics;
-
             private GameTime gameTime;
 
             /// <summary>
@@ -37,8 +37,8 @@ namespace Team06.Device
             /// <param name="graphics"></param>
             private GameDevice(ContentManager content, GraphicsDevice graphics)
             {
-                //renderer = new Renderer(content, graphics);
-                //sound = new Sound(content);
+                renderer = new Renderer(content, graphics);
+                sound = new Sound(content);
                 random = new Random();
                 this.content = content;
                 this.graphics = graphics;
@@ -68,7 +68,7 @@ namespace Team06.Device
             public static GameDevice Instance()
             {
                 //まだインスタンスが生成されていなければエラー分を出す
-                //Debug.Assert(instance != null, "Game1クラスのInitializeメソッド内で引数付きInstanceメソッドを読んでください");
+                Debug.Assert(instance != null, "Game1クラスのInitializeメソッド内で引数付きInstanceメソッドを読んでください");
                 return instance;
             }
 
@@ -86,7 +86,7 @@ namespace Team06.Device
             public void Update(GameTime gameTime)
             {
                 //デバイスで1回のみ更新が必要なモノ
-                //Input.Update();
+                Input.Update();
 
                 this.gameTime = gameTime;
             }

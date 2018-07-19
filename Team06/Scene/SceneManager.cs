@@ -19,7 +19,6 @@ namespace Team06.Scene
         /// コンストラクタ
         /// </summary>
         public SceneManager() { }
-
         /// <summary>
         /// シーンの追加
         /// </summary>
@@ -47,9 +46,9 @@ namespace Team06.Scene
             }
 
             //ディクショナリから次のシーンを取り出し、現在のシーンに設定
-         //   currentScene = scenes[name];//
+            currentScene = scenes[name];//
             //シーンの初期化
-           // currentScene.Intialize();
+         　  currentScene.Intialize();
 
         }
         public void Update(GameTime gameTime)

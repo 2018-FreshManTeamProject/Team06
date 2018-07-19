@@ -80,7 +80,6 @@ namespace Team06.Actor
         {
             //得点処理
            // int score = 0;
-           
         }
     }
 }
