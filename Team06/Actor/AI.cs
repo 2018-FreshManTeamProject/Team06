@@ -10,12 +10,10 @@ namespace Team06.Actor
    abstract class AI
     {
          protected Vector2 position;
-
         public AI()
         {
             position = Vector2.Zero;
         }
-
         public abstract Vector2 Think(Character character);
    
     }

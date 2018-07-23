@@ -16,49 +16,43 @@ namespace Team06.Actor
 {
     class Goal
     {
-        //ゴールの四角形
-        private Rectangle goalRect;
-       
-        public Goal(Vector2 position)
+        private Kaito kaito;
+        private Rectangle goal;
+        private bool isPlayerGoal;  //終了フラグ
+
+
+        public Goal(Kaito kaito)
         {
-            int x = (int)position.X;
-            int y = (int)position.Y;
-            int width = 64;
-            int height = 17;
-            goalRect = new Rectangle(x, y, width, height);
+            this.kaito = kaito;
+            goal = new Rectangle(641, 751, 64, 64);
+
+            //まだプレイヤーがゴールしていないことにする
+            isPlayerGoal = false;
+        }
+
+        public void Update()
+        {
+            if (IsCollision())
+            {
+                isPlayerGoal = true;
+            }
         }
        
-        /////終了処理
-        public  void Shutdown()
+        private bool IsCollision()
         {
-            
+            return goal.Intersects(kaito.GetPlayerRectangle());
         }
-    
-        /// <summary>
-        /// ヒット通知
-        /// </summary>
-        /// <param name="other">衝突した相手</param>
-        public  void Hit(Character other)
+
+        public bool IsGoal()
         {
-           
+            return isPlayerGoal;
         }
 
         public void Draw(Renderer renderer)
         {
-            Vector2 position = new Vector2(goalRect.X, goalRect.Y);
-            renderer.DrawTexture("goalyoko",position);
+            renderer.DrawTexture("goalyoko", new Vector2(641,751));
         }
 
-        public bool IsCollision(Rectangle playerRect)
-        {
-            //引数のプレイヤーの「Rectangle」とゴールの「Rectangle」が重なっているかどうか(当たっているかどうか)
-            return goalRect.Contains(playerRect);
-        }
-
-        //public Rectangle GetPlayerRect()
-        //{
-        //    return playerRect;
-        //}
-
+        
     }
 }

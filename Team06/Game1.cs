@@ -91,9 +91,9 @@ namespace Team06
             // この下にロジックを記述
             renderer.LoadContent("backkari");
             //  renderer.LoadContent("kabe");
-            renderer.LoadContent("number");
+            renderer.LoadContent("number2");
             renderer.LoadContent("timer");
-            renderer.LoadContent("ending");
+            renderer.LoadContent("congratulation");
           //  renderer.LoadContent("goal");
             renderer.LoadContent("stage");
             renderer.LoadContent("kaito");

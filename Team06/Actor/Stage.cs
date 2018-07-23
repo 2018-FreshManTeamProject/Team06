@@ -11,18 +11,14 @@ namespace Team06.Actor
     class Stage
     {
         private Kaito kaito;
-
         private List<Rectangle> wallList;
 
         public Stage(Kaito kaito)
         {
             this.kaito = kaito;
-
             wallList = new List<Rectangle>();
-
             Add();
         }
-
         private void Add()
         {
             wallList.Add(new Rectangle(0, 0, 100, 800)); //左壁
@@ -32,9 +28,7 @@ namespace Team06.Actor
             wallList.Add(new Rectangle(641, 541, 9, 29));//チョコ
             wallList.Add(new Rectangle(641, 690, 258, 30));//ゴール↑
             wallList.Add(new Rectangle(900, 0, 99, 799));//UIスぺ
-
         }
-
         public void Update()
         {
             foreach(var rect in wallList)
@@ -46,7 +40,6 @@ namespace Team06.Actor
                 }
             }
         }
-
         //ステージによる押し出し
         private void StagePush(Rectangle rect)
         {
@@ -71,6 +64,5 @@ namespace Team06.Actor
         {
             renderer.DrawTexture("stage", new Vector2(0, 0));
         }
-
     }
 }
