@@ -92,7 +92,6 @@ namespace Team06.Actor
                         //互いにヒット通知
                         player.Hit(enemy);
                         enemy.Hit(player);
-
                     }
                 }
 
@@ -126,21 +125,21 @@ namespace Team06.Actor
             }
 
             ////追加候補者をリストに追加
-            //foreach (var newChara in addNewCharacter)
-            //{
-            //    //キャラがプレイヤーだったらプレイやリストに登録
-            //    if (newChara is Player)
-            //    {
-            //        newChara.Initialize();
-            //        players.Add(newChara);
-            //    }
-            //    //それ以外は敵リストに登録
-            //    else
-            //    {
-            //        newChara.Initialize();
-            //        enemys.Add(newChara);
-            //    }
-            //}
+            foreach (var newChara in addNewCharacter)
+            {
+                //キャラがプレイヤーだったらプレイやリストに登録
+                if (newChara is Kaito)
+                {
+                    newChara.Initialize();
+                    players.Add(newChara);
+                }
+                //それ以外は敵リストに登録
+                else
+                {
+                    newChara.Initialize();
+                    enemys.Add(newChara);
+                }
+            }
             //追加処理後、追加リストはクリア
             addNewCharacter.Clear();
 

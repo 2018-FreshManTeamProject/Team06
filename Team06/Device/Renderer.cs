@@ -186,8 +186,6 @@ namespace Team06.Device
                 position.X += width;
             }
         }
-
-
         public void DrawNumber(string assetName, Vector2 position, float number, float alpha = 1.0f)
         {
 

@@ -18,6 +18,7 @@ namespace Team06.Actor
         //モーション管理オブジェクト
         private Motion motion;
 
+
         /// <summary>
         /// 向き
         /// </summary>
@@ -32,8 +33,13 @@ namespace Team06.Actor
 
         ///コンストラクタ
         public Player(IGameMediator mediator)
-            : base("oikake_player_4anime", mediator)
+            : base("kaito", mediator)
         {
+            int x = (int)position.X;
+            int y = (int)position.Y;
+            //int width = 64;
+            //int height = 64;
+            //  playerRect = new Rectangle(x, y, width, height);
         }
 
         ///初期化メソッド
@@ -45,29 +51,8 @@ namespace Team06.Actor
             motion = new Motion();
             for (int i = 0; i < 16; i++)
             {
-                motion.Add(i, new Rectangle(64 * (i % 4), 64 * (int)(i / 4), 64, 64));
+                motion.MotionAdd(i, new Rectangle(64 * (i % 4), 64 * (int)(i / 4), 64, 64));
             }
-
-            ////下向き
-            //motion.Add(0, new Rectangle(64 * 0, 64 * 0, 64, 64));
-            //motion.Add(1, new Rectangle(64 * 1, 64 * 0, 64, 64));
-            //motion.Add(2, new Rectangle(64 * 2, 64 * 0, 64, 64));
-            //motion.Add(3, new Rectangle(64 * 3, 64 * 0, 64, 64));
-            ////上向き
-            //motion.Add(4, new Rectangle(64 * 0, 64 * 1, 64, 64));
-            //motion.Add(5, new Rectangle(64 * 1, 64 * 1, 64, 64));
-            //motion.Add(6, new Rectangle(64 * 2, 64 * 1, 64, 64));
-            //motion.Add(7, new Rectangle(64 * 3, 64 * 1, 64, 64));
-            ////右向き
-            //motion.Add(8, new Rectangle(64 * 0, 64 * 2, 64, 64));
-            //motion.Add(9, new Rectangle(64 * 1, 64 * 2, 64, 64));
-            //motion.Add(10, new Rectangle(64 * 2, 64 * 2, 64, 64));
-            //motion.Add(11, new Rectangle(64 * 3, 64 * 2, 64, 64));
-            ////左向き
-            //motion.Add(12, new Rectangle(64 * 0, 64 * 3, 64, 64));
-            //motion.Add(13, new Rectangle(64 * 1, 64 * 3, 64, 64));
-            //motion.Add(14, new Rectangle(64 * 2, 64 * 3, 64, 64));
-            //motion.Add(15, new Rectangle(64 * 3, 64 * 3, 64, 64));
 
             //最初はすべてのパーツ表示に設定
             motion.Initialize(new Range(0, 3), new CountDownTimer(0.2f));
@@ -99,57 +84,6 @@ namespace Team06.Actor
             var max = new Vector2(Screen.Width - 64, Screen.Height - 64);
             position = Vector2.Clamp(position, min, max);
         }
-        ////移動処理
-        //float speed = 10.0f;
-        //position = position + velocity * speed;
-        ////右
-        //if (Input.GetKeyState(Keys.Right))
-        //{
-        //    velocity.X = 1f;
-        //}
-
-        ////左
-        //if ( Input.GetKeyState(Keys.Left))
-        //{
-        //    velocity.X = -1f;
-        //}
-        ////上
-        //if (Input.GetKeyState(Keys.Up)) 
-        //{
-        //    velocity.Y = -1f;
-        //}
-        ////下
-        //if (Input.GetKeyState(Keys.Down))
-        //{
-        //    velocity.Y = 1f;
-        //}
-        ////正規化
-        //if (velocity.Length() !=0)
-        //{
-        //    velocity.Normalize();
-        //}
-
-
-        ////左壁
-        //if (position.X < 0.0f)
-        //{
-        //    position.X = 0.0f;
-        //}
-        ////右壁
-        //if (position.X >= Screen.Width - 64)
-        //{
-        //    position.X = Screen.Width - 64;
-        //}
-        ////上壁
-        //if (position.Y < 0.0f)
-        //{
-        //    position.Y = 0.0f;
-        //}
-        ////下壁
-        //if (position.Y >= Screen.Height - 64)
-        //{
-        //    position.Y = Screen.Height- 64;
-        //}
 
 
         ///描画メソッド
@@ -224,5 +158,5 @@ namespace Team06.Actor
                 ChangeMotion(Direction.LEFT);
             }
         }
-    }
+}
 }

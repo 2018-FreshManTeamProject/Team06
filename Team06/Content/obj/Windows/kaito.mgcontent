@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SourceFile>C:/Users/K018A1694/Desktop/電算チーム制作＿6班/Team06/Content/kaito.png</SourceFile>
-  <SourceTime>2018-07-09T17:13:56+09:00</SourceTime>
+  <SourceTime>2018-07-19T18:01:43.0644545+09:00</SourceTime>
   <DestFile>C:/Users/K018A1694/Desktop/電算チーム制作＿6班/Team06/Content/bin/Windows/kaito.xnb</DestFile>
-  <DestTime>2018-07-13T17:06:41.7846035+09:00</DestTime>
+  <DestTime>2018-07-19T18:32:58.5182113+09:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2017-03-02T00:05:36+09:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

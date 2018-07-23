@@ -16,10 +16,16 @@ namespace Team06.Actor
 {
     class Goal
     {
+        //ゴールの四角形
+        private Rectangle goalRect;
        
-        public Goal()
+        public Goal(Vector2 position)
         {
-            
+            int x = (int)position.X;
+            int y = (int)position.Y;
+            int width = 64;
+            int height = 17;
+            goalRect = new Rectangle(x, y, width, height);
         }
        
         /////終了処理
@@ -36,6 +42,23 @@ namespace Team06.Actor
         {
            
         }
+
+        public void Draw(Renderer renderer)
+        {
+            Vector2 position = new Vector2(goalRect.X, goalRect.Y);
+            renderer.DrawTexture("goalyoko",position);
+        }
+
+        public bool IsCollision(Rectangle playerRect)
+        {
+            //引数のプレイヤーの「Rectangle」とゴールの「Rectangle」が重なっているかどうか(当たっているかどうか)
+            return goalRect.Contains(playerRect);
+        }
+
+        //public Rectangle GetPlayerRect()
+        //{
+        //    return playerRect;
+        //}
 
     }
 }

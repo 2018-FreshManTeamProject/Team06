@@ -12,7 +12,7 @@ using Team06.Util;
 
 namespace Team06.Scene
 {
-    class GamePlay : IScene
+    class GamePlay : IScene,IGameMediator
     {
         private CharacterManager characterManager;    //キャラクター管理者
         private Score score;                          //得点
@@ -23,14 +23,19 @@ namespace Team06.Scene
         private TimerUI timerUI;                      //時間UI
         private bool isEndFlag;                       //シーン終了フラグ
         private Sound sound;
+        private Goal goal;
+        private Kaito kaito;
+        private Stage stage;
 
         public GamePlay(Timer scoreTimer)
         {
             isEndFlag = false;
             var gameDevice = GameDevice.Instance();
             sound = gameDevice.GetSound();
+
             this.scoreTimer = scoreTimer;
             limitTimer = new CountDownTimer(60.0f);
+            goal = new Goal(new Vector2(641,721));
         }
 
         public void Intialize()
@@ -40,7 +45,10 @@ namespace Team06.Scene
 
             //キャラクターマネージャーの実態生成
             characterManager = new CharacterManager();
-
+            kaito = new Kaito(this);
+            kaito.Initialize();
+            stage = new Stage(kaito);
+            characterManager.Add(kaito);
             //時間関連
             timerUI = new TimerUI(limitTimer);
 
@@ -102,16 +110,18 @@ namespace Team06.Scene
         {
             //描画開始
             renderer.Begin();
+            stage.Draw(renderer);
+
             //背景を描画
-            renderer.DrawTexture("backkari", Vector2.Zero);
-            renderer.DrawTexture("goal", new Vector2(700,600));
+            //renderer.DrawTexture("stage", Vector2.Zero);
+            goal.Draw(renderer);
 
             //   renderer.DrawTexture("kabe", Vector2.Zero);
 
             //キャラクター一括管理
 
             ////プレイヤーを描画
-            //player.Draw(renderer);
+            kaito.Draw(renderer);
             //////エネミーを描画
             //enemy.Draw(renderer);
 
@@ -153,6 +163,14 @@ namespace Team06.Scene
 
             //キャラクターマネージャー更新
             characterManager.Update(gameTime);
+
+            stage.Update();
+
+            //if (goal.IsCollision() == true) 
+            //{
+            //    //プレイヤーとゴールが当たっているときの処理
+
+            //}
 
 
             //時間切れか？

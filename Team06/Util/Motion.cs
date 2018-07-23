@@ -67,10 +67,11 @@ namespace Team06.Util
         /// </summary>
         /// <param name="index">管理番号</param>
         /// <param name="rect">短形</param>
-        public void Add(int index, Rectangle rect)
-        {
-            //すでに登録されていたら何もしない
-        }
+        //public void Add(int index, Rectangle rect)
+        //{
+        //    //すでに登録されていたら何もしない
+            
+        //}
         /// モーション矩形情報の追加
         /// </summary>
         /// <param name="index">管理番号</param>

@@ -94,7 +94,12 @@ namespace Team06
             renderer.LoadContent("number");
             renderer.LoadContent("timer");
             renderer.LoadContent("ending");
-            renderer.LoadContent("goal");
+          //  renderer.LoadContent("goal");
+            renderer.LoadContent("stage");
+            renderer.LoadContent("kaito");
+            renderer.LoadContent("goalyoko");
+
+
 
 
             ////    renderer.LoadContent("fade", fade);
