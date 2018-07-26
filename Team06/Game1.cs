@@ -89,12 +89,12 @@ namespace Team06
              renderer = gameDevice.GetRenderer();
 
             // この下にロジックを記述
-            renderer.LoadContent("backkari");
+            renderer.LoadContent("title");
             //  renderer.LoadContent("kabe");
-            renderer.LoadContent("number2");
+            renderer.LoadContent("number1");
             renderer.LoadContent("timer");
-            renderer.LoadContent("congratulation");
-          //  renderer.LoadContent("goal");
+            renderer.LoadContent("congratulation1");
+            renderer.LoadContent("searchlight");
             renderer.LoadContent("stage");
             renderer.LoadContent("kaito");
             renderer.LoadContent("goalyoko");

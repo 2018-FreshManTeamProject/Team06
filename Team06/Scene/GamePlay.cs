@@ -24,6 +24,8 @@ namespace Team06.Scene
         private Goal goal;
         private Kaito kaito;
         private Stage stage;
+        private SearchLight light;
+
         public GamePlay(Timer scoreTimer)
         {
             isEndFlag = false;
@@ -43,6 +45,10 @@ namespace Team06.Scene
             stage = new Stage(kaito);
             goal = new Goal(kaito);
             characterManager.Add(kaito);
+            
+            //characterManager.Add(new SearchLight(this, new SearchLightAI(),kaito));
+            light = new SearchLight(this, new SearchLightAI(), kaito);
+            light.Initialize();
             //時間関連
             timerUI = new TimerUI(limitTimer);
             //スコア関連
@@ -76,6 +82,7 @@ namespace Team06.Scene
             kaito.Draw(renderer);
             timerUI.Draw(renderer);
             characterManager.Draw(renderer);        //キャラクター管理者の描画
+            light.Draw(renderer);
             //描画終了
             renderer.End();
         }
@@ -101,9 +108,15 @@ namespace Team06.Scene
             characterManager.Update(gameTime);
             stage.Update();
             goal.Update();
+            light.Update(gameTime);
+
             if (goal.IsGoal()== true)
             {
                 //プレイヤーとゴールが当たっているときの処理
+                isEndFlag = true;
+            }
+            if(light.IsGameEnd() ==true)
+            {
                 isEndFlag = true;
             }
             //時間切れか？

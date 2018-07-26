@@ -34,7 +34,7 @@ namespace Team06.Scene
             backGroundScene.Draw(renderer);
 
             renderer.Begin();
-            renderer.DrawTexture("congratulation", new Vector2(0,0));
+            renderer.DrawTexture("congratulation1", new Vector2(0,0));
             timerUI.Draw(renderer, new Vector2(100, 100));
             renderer.End();
         }

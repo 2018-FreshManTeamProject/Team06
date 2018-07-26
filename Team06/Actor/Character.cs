@@ -20,10 +20,20 @@ namespace Team06.Actor
         protected string name;        //画像の名前
         protected bool isDeadFlag;    //死亡フラグ
         protected IGameMediator mediator;   //仲介者
+        protected Kaito kaito;
+
+       protected enum State
+        {
+            Preparation,
+            Alive,
+            Dying,
+            Dead
+        };
 
         ///コンストラクタ
         public Character(string name, IGameMediator mediator)
         {
+           
             this.name = name;
             position = Vector2.Zero;
             isDeadFlag = false;
