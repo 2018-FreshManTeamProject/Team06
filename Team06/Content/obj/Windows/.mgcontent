@@ -4,26 +4,22 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/K018A1694/Desktop/電算チーム制作＿6班/Team06/Content/kaito.png</File>
-    <File>C:/Users/K018A1694/Desktop/電算チーム制作＿6班/Team06/Content/alarm.png</File>
-    <File>C:/Users/K018A1694/Desktop/電算チーム制作＿6班/Team06/Content/ending.bmp</File>
-    <File>C:/Users/K018A1694/Desktop/電算チーム制作＿6班/Team06/Content/../../../K018A1694/MonoGame/Oikake/trunk/Oikake/Oikake/Content/timer.bmp</File>
-    <File>C:/Users/K018A1694/Desktop/電算チーム制作＿6班/Team06/Content/../../number.bmp</File>
-    <File>C:/Users/K018A1694/Desktop/電算チーム制作＿6班/Team06/Content/../../timer.bmp</File>
-    <File>C:/Users/K018A1694/Desktop/電算チーム制作＿6班/Team06/Content/boll1.png</File>
-    <File>C:/Users/K018A1694/Desktop/電算チーム制作＿6班/Team06/Content/backkari.bmp</File>
-    <File>C:/Users/K018A1694/Desktop/電算チーム制作＿6班/Team06/Content/goal.png</File>
-    <File>C:/Users/K018A1694/Desktop/電算チーム制作＿6班/Team06/Content/number.bmp</File>
-    <File>C:/Users/K018A1694/Desktop/電算チーム制作＿6班/Team06/Content/timer.bmp</File>
-    <File>C:/Users/K018A1694/Desktop/電算チーム制作＿6班/Team06/Content/../../../../Documents/stage.bmp</File>
-    <File>C:/Users/K018A1694/Desktop/電算チーム制作＿6班/Team06/Content/stage.bmp</File>
-    <File>C:/Users/K018A1694/Desktop/電算チーム制作＿6班/Team06/Content/goalyoko.bmp</File>
-    <File>C:/Users/K018A1694/Desktop/電算チーム制作＿6班/Team06/Content/searchlight.png</File>
-    <File>C:/Users/K018A1694/Desktop/電算チーム制作＿6班/Team06/Content/congratulation.png</File>
-    <File>C:/Users/K018A1694/Desktop/電算チーム制作＿6班/Team06/Content/gameover.png</File>
-    <File>C:/Users/K018A1694/Desktop/電算チーム制作＿6班/Team06/Content/number2.png</File>
-    <File>C:/Users/K018A1694/Desktop/電算チーム制作＿6班/Team06/Content/number1.png</File>
-    <File>C:/Users/K018A1694/Desktop/電算チーム制作＿6班/Team06/Content/title.png</File>
-    <File>C:/Users/K018A1694/Desktop/電算チーム制作＿6班/Team06/Content/congratulation1.png</File>
+    <File>C:/電算部/SourceTree/Team06/Content/kaito.png</File>
+    <File>C:/電算部/SourceTree/Team06/Content/alarm.png</File>
+    <File>C:/電算部/SourceTree/Team06/Content/ending.bmp</File>
+    <File>C:/電算部/SourceTree/Team06/Content/boll1.png</File>
+    <File>C:/電算部/SourceTree/Team06/Content/backkari.bmp</File>
+    <File>C:/電算部/SourceTree/Team06/Content/goal.png</File>
+    <File>C:/電算部/SourceTree/Team06/Content/number.bmp</File>
+    <File>C:/電算部/SourceTree/Team06/Content/timer.bmp</File>
+    <File>C:/電算部/SourceTree/Team06/Content/stage.bmp</File>
+    <File>C:/電算部/SourceTree/Team06/Content/goalyoko.bmp</File>
+    <File>C:/電算部/SourceTree/Team06/Content/searchlight.png</File>
+    <File>C:/電算部/SourceTree/Team06/Content/congratulation.png</File>
+    <File>C:/電算部/SourceTree/Team06/Content/gameover.png</File>
+    <File>C:/電算部/SourceTree/Team06/Content/number2.png</File>
+    <File>C:/電算部/SourceTree/Team06/Content/number1.png</File>
+    <File>C:/電算部/SourceTree/Team06/Content/title.png</File>
+    <File>C:/電算部/SourceTree/Team06/Content/congratulation1.png</File>
   </SourceFiles>
 </SourceFileCollection>
